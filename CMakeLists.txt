@@ -21,6 +21,12 @@ set(VERSION_REV 0)
 set(VERSION_STAGE alpha)
 set(VERSION "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_REV}")
 
+set(CURL_INCLUDE_DIR "/Users/diego/tarballs/iOScURL/curl")
+set(CURL_LIBRARY "/Users/diego/tarballs/iOScURL/libcurl.a")
+
+set (CMAKE_CXX_COMPILER_WORKS TRUE)
+set (CMAKE_C_COMPILER_WORKS TRUE)
+
 cmake_minimum_required(VERSION 2.6)
 
 # CMake complains if we don't have this.
@@ -146,16 +152,16 @@ if (UNIX)
 
 	check_type_size(char SIZEOF_CHAR)
 	check_type_size(int SIZEOF_INT)
-	check_type_size(long SIZEOF_LONG)
+  #check_type_size(long SIZEOF_LONG)
 	check_type_size(short SIZEOF_SHORT)
 
 	# pthread is used on both Linux and Mac
-	check_library_exists("pthread" pthread_create "" HAVE_PTHREAD)
-	if (HAVE_PTHREAD)
-		list(APPEND libs pthread)
-	else()
-		message(FATAL_ERROR "Missing library: pthread")
-	endif()
+#	check_library_exists("pthread" pthread_create "" HAVE_PTHREAD)
+#	if (HAVE_PTHREAD)
+#		list(APPEND libs pthread)
+#	else()
+#		message(FATAL_ERROR "Missing library: pthread")
+#	endif()
 
 	# curl is used on both Linux and Mac
 	find_package(CURL)
@@ -169,9 +175,9 @@ if (UNIX)
 		message(STATUS "OSX_TARGET_MAJOR=${OSX_TARGET_MAJOR}")
 		message(STATUS "OSX_TARGET_MINOR=${OSX_TARGET_MINOR}")
 
-		if (NOT (OSX_TARGET_MAJOR EQUAL 10))
-			message(FATAL_ERROR "Mac OS X target must be 10.x")
-		endif ()
+    #if (NOT (OSX_TARGET_MAJOR EQUAL 10))
+    #	message(FATAL_ERROR "Mac OS X target must be 10.x")
+    #endif ()
 
 		if (OSX_TARGET_MINOR LESS 6)
 			# <= 10.5: 32-bit Intel and PowerPC
@@ -179,17 +185,17 @@ if (UNIX)
 				CACHE STRING "" FORCE)
 		else()
 			# >= 10.6: Intel only
-			set(CMAKE_OSX_ARCHITECTURES "i386"
+			set(CMAKE_OSX_ARCHITECTURES "armv7;armv7s;arm64;i386"
 				CACHE STRING "" FORCE)
 		endif()
 		
 		set(CMAKE_CXX_FLAGS "--sysroot ${CMAKE_OSX_SYSROOT} ${CMAKE_CXX_FLAGS} -DGTEST_USE_OWN_TR1_TUPLE=1")
 
-		find_library(lib_ScreenSaver ScreenSaver)
+    #find_library(lib_ScreenSaver ScreenSaver)
 		find_library(lib_IOKit IOKit)
-		find_library(lib_ApplicationServices ApplicationServices)
+    #find_library(lib_ApplicationServices ApplicationServices)
 		find_library(lib_Foundation Foundation)
-		find_library(lib_Carbon Carbon)
+    #find_library(lib_Carbon Carbon)
 
 		list(APPEND libs
 			${lib_ScreenSaver}
@@ -298,7 +304,7 @@ if (UNIX)
 	add_definitions(-DSYSAPI_UNIX=1 -DHAVE_CONFIG_H)
 
 	if (APPLE)
-		add_definitions(-DWINAPI_CARBON=1 -D_THREAD_SAFE)
+		add_definitions(-D_THREAD_SAFE)
 	else (APPLE)
 		add_definitions(-DWINAPI_XWINDOWS=1)
 	endif()

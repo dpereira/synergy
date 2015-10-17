@@ -43,7 +43,7 @@
 #include <stdio.h>
 
 #if WINAPI_CARBON
-#include <ApplicationServices/ApplicationServices.h>
+//#include <ApplicationServices/ApplicationServices.h>
 #endif
 
 #if defined(__APPLE__)
@@ -98,14 +98,14 @@ App::run(int argc, char** argv)
 {	
 #if MAC_OS_X_VERSION_10_7
 	// dock hide only supported on lion :(
-	ProcessSerialNumber psn = { 0, kCurrentProcess };
+	//ProcessSerialNumber psn = { 0, kCurrentProcess };
 	
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-	GetCurrentProcess(&psn);
+	//GetCurrentProcess(&psn);
 #pragma GCC diagnostic pop
 
-	TransformProcessType(&psn, kProcessTransformToBackgroundApplication);
+	//TransformProcessType(&psn, kProcessTransformToBackgroundApplication);
 #endif
 
 	// install application in to arch

@@ -160,6 +160,8 @@ ArgParser::parsePlatformArg(ArgsBase& argsBase, const int& argc, const char* con
 #elif WINAPI_CARBON
 	// no options for carbon
 	return false;
+#else
+  return false;
 #endif
 }
 

@@ -589,6 +589,8 @@ ServerApp::createScreen()
 		args().m_display, true, args().m_disableXInitThreads, 0, m_events), m_events);
 #elif WINAPI_CARBON
 	return new synergy::Screen(new OSXScreen(m_events, true), m_events);
+#else
+  return NULL;
 #endif
 }
 
@@ -747,7 +749,7 @@ ServerApp::mainLoop()
 	// that.
 	DAEMON_RUNNING(true);
 	
-#if defined(MAC_OS_X_VERSION_10_7)
+/*#if defined(MAC_OS_X_VERSION_10_7)
 	
 	Thread thread(
 		new TMethodJob<ServerApp>(
@@ -760,9 +762,9 @@ ServerApp::mainLoop()
 	screen->waitForCarbonLoop();
 	
 	runCocoaApp();
-#else
+#else*/
 	m_events->loop();
-#endif
+//#endif
 	
 	DAEMON_RUNNING(false);
 
