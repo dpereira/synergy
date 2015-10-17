@@ -185,7 +185,7 @@ if (UNIX)
 				CACHE STRING "" FORCE)
 		else()
 			# >= 10.6: Intel only
-			set(CMAKE_OSX_ARCHITECTURES "armv7;armv7s;arm64;i386"
+			set(CMAKE_OSX_ARCHITECTURES "armv7;armv7s;arm64"
 				CACHE STRING "" FORCE)
 		endif()
 		
