@@ -226,7 +226,7 @@ ServerApp::loadConfig(const String& pathname)
 {
 	try {
 		// load configuration
-		LOG((CLOG_DEBUG "opening configuration \"%s\"", pathname.c_str()));
+		//LOG((CLOG_DEBUG "opening configuration \"%s\"", pathname.c_str()));
 		std::ifstream configStream(pathname.c_str());
 		if (!configStream.is_open()) {
 			// report failure to open configuration as a debug message
@@ -236,7 +236,11 @@ ServerApp::loadConfig(const String& pathname)
 				pathname.c_str()));
 			return false;
 		}
-		configStream >> *args().m_config;
+    LOG((CLOG_DEBUG "ABOUT TO LOAD CONFIG"));
+        //Config* mc = &(*(args().m_config));
+        Config *mc = new Config();
+		configStream >> *mc;
+    args().m_config = mc;
 		LOG((CLOG_DEBUG "configuration read successfully"));
 		return true;
 	}

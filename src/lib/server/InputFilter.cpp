@@ -887,10 +887,11 @@ InputFilter::Rule::getAction(bool onActivation, UInt32 index) const
 // -----------------------------------------------------------------------------
 // Input Filter Class
 // -----------------------------------------------------------------------------
-InputFilter::InputFilter(IEventQueue* events) :
-	m_primaryClient(NULL),
-	m_events(events)
+InputFilter::InputFilter(IEventQueue* events)
 {
+  LOG((CLOG_DEBUG "INPUTFILTER"));
+  m_primaryClient = NULL;
+  m_events = events;
 	// do nothing
 }
 

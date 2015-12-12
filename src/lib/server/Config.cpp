@@ -23,6 +23,7 @@
 #include "synergy/key_types.h"
 #include "net/XSocket.h"
 #include "base/IEventQueue.h"
+#include "base/Log.h"
 #include "common/stdistream.h"
 #include "common/stdostream.h"
 
@@ -618,10 +619,19 @@ Config::operator!=(const Config& x) const
 void
 Config::read(ConfigReadContext& context)
 {
-	Config tmp(m_events);
+  LOG((CLOG_DEBUG "#1 0x%x", (unsigned long)this ));
+
+	//Config tmp(m_events);
+  Config tmp;
+
+  LOG((CLOG_DEBUG "#2 0x%x", (unsigned long)this ));
+
 	while (context.getStream()) {
 		tmp.readSection(context);
 	}
+
+  LOG((CLOG_DEBUG "#3 0x%x", (unsigned long)this ));
+
 	*this = tmp;
 }
 
@@ -1763,6 +1773,7 @@ std::istream&
 operator>>(std::istream& s, Config& config)
 {
 	ConfigReadContext context(s);
+    LOG((CLOG_DEBUG "Config is @0x%x", (unsigned long)&config));
 	config.read(context);
 	return s;
 }

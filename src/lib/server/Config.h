@@ -176,9 +176,9 @@ public:
 	Config(IEventQueue* events);
 	virtual ~Config();
 
-#ifdef TEST_ENV
+//#ifdef TEST_ENV
 	Config() : m_inputFilter(NULL) { }
-#endif
+//#endif
 
 	//! @name manipulators
 	//@{
