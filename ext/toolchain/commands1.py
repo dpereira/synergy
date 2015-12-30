@@ -281,9 +281,10 @@ class InternalCommands():
             cmake_args += ' -DCMAKE_OSX_ARCHITECTURES="armv7s"'
             cmake_args += ' -DCMAKE_TRY_COMPILE_OSX_ARCHITECTURES=""'
             cmake_args += ' -DCMAKE_OSX_DEPLOYMENT_TARGET=""'
+            cmake_args += ' -DCMAKE_BUILD_TYPE=debug'
             cmake_args += ' -DCMAKE_OSX_SYSROOT=%s' % ("/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.1.sdk",)
-            cmake_args += ' -DCMAKE_CXX_FLAGS="-arch armv7 -arch armv7s -arch arm64 -isysroot %s -DHAVE_INET_ATON -DHAVE_POSIX_SIGWAIT -DHAVE_SYS_SOCKET_H -DTYPE_OF_SIZE_1=char -DHAVE_SYS_TYPES_H -DHAVE_PTHREAD -I/Users/diego/tarballs/iOScURL/iOScURL/"' % (sysroot, )
-            cmake_args += ' -DCMAKE_C_FLAGS="-arch armv7 -arch armv7s -arch arm64 -isysroot %s -DHAVE_INET_ATON -DHAVE_POSIX_SIGWAIT -DTYPE_OF_SIZE_1=char -DHAVE_SYS_SOCKET_H -DHAVE_SYS_TYPES_H -DHAVE_PTHREAD -I/Users/diego/tarballs/iOScURL/iOScURL/"' % (sysroot, )      
+            cmake_args += ' -DCMAKE_CXX_FLAGS="-g -arch armv7 -arch armv7s -arch arm64 -isysroot %s -DHAVE_INET_ATON -DHAVE_POSIX_SIGWAIT -DHAVE_SYS_SOCKET_H -DTYPE_OF_SIZE_1=char -DHAVE_SYS_TYPES_H -DHAVE_PTHREAD -I/Users/diego/tarballs/iOScURL/iOScURL/"' % (sysroot, )
+            cmake_args += ' -DCMAKE_C_FLAGS="-g -arch armv7 -arch armv7s -arch arm64 -isysroot %s -DHAVE_INET_ATON -DHAVE_POSIX_SIGWAIT -DTYPE_OF_SIZE_1=char -DHAVE_SYS_SOCKET_H -DHAVE_SYS_TYPES_H -DHAVE_PTHREAD -I/Users/diego/tarballs/iOScURL/iOScURL/"' % (sysroot, )      
         sourceDir = generator.getSourceDir()
         self.checkGTest()
         self.checkGMock()

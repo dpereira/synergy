@@ -309,22 +309,11 @@ OSXScreen::getCursorPos(SInt32& x, SInt32& y) const
 void
 OSXScreen::reconfigure(UInt32)
 {
-	// do nothing
 }
 
 void
 OSXScreen::warpCursor(SInt32 x, SInt32 y)
 {
-	// move cursor without generating events
-	CGPoint pos;
-	pos.x = x;
-	pos.y = y;
-	CGWarpMouseCursorPosition(pos);
-	
-	// save new cursor position
-	m_xCursor        = x;
-	m_yCursor        = y;
-	m_cursorPosValid = true;
 }
 
 void

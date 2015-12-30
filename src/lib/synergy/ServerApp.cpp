@@ -50,6 +50,8 @@
 #include "platform/XWindowsScreen.h"
 #elif WINAPI_CARBON
 #include "platform/OSXScreen.h"
+#else
+#include "platform/IOSScreen.h"
 #endif
 
 #if defined(__APPLE__)
@@ -594,7 +596,7 @@ ServerApp::createScreen()
 #elif WINAPI_CARBON
 	return new synergy::Screen(new OSXScreen(m_events, true), m_events);
 #else
-  return NULL;
+  return new synergy::Screen(new IOSScreen(m_events), m_events);
 #endif
 }
 
