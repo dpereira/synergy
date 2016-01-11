@@ -131,9 +131,9 @@ ArchNetworkBSD::copySocket(ArchSocket s)
 	assert(s != NULL);
 
 	// ref the socket and return it
-	ARCH->lockMutex(m_mutex);
+	//ARCH->lockMutex(m_mutex);
 	++s->m_refCount;
-	ARCH->unlockMutex(m_mutex);
+	//ARCH->unlockMutex(m_mutex);
 	return s;
 }
 

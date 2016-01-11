@@ -35,26 +35,32 @@ PlatformScreen::~PlatformScreen()
 void
 PlatformScreen::updateKeyMap()
 {
+  if(getKeyState() != NULL)
 	getKeyState()->updateKeyMap();
 }
 
 void
 PlatformScreen::updateKeyState()
 {
+  if(getKeyState() != NULL) {
 	getKeyState()->updateKeyState();
 	updateButtons();
+  }
 }
 
 void
 PlatformScreen::setHalfDuplexMask(KeyModifierMask mask)
 {
+  if(getKeyState() != NULL) {
 	getKeyState()->setHalfDuplexMask(mask);
+  }
 }
 
 void
 PlatformScreen::fakeKeyDown(KeyID id, KeyModifierMask mask,
 				KeyButton button)
 {
+  if(getKeyState() != NULL)
 	getKeyState()->fakeKeyDown(id, mask, button);
 }
 
@@ -62,54 +68,70 @@ bool
 PlatformScreen::fakeKeyRepeat(KeyID id, KeyModifierMask mask,
 				SInt32 count, KeyButton button)
 {
+  if(getKeyState() != NULL)
 	return getKeyState()->fakeKeyRepeat(id, mask, count, button);
+  else return true;
 }
 
 bool
 PlatformScreen::fakeKeyUp(KeyButton button)
 {
+  if(getKeyState() != NULL)
 	return getKeyState()->fakeKeyUp(button);
+  else return true;
 }
 
 void
 PlatformScreen::fakeAllKeysUp()
 {
+  if(getKeyState() != NULL)
 	getKeyState()->fakeAllKeysUp();
 }
 
 bool
 PlatformScreen::fakeCtrlAltDel()
 {
+  if(getKeyState() != NULL)
 	return getKeyState()->fakeCtrlAltDel();
+  else return true;
 }
 
 bool
 PlatformScreen::isKeyDown(KeyButton button) const
 {
+  if(getKeyState() != NULL)
 	return getKeyState()->isKeyDown(button);
+  else return true;
 }
 
 KeyModifierMask
 PlatformScreen::getActiveModifiers() const
 {
+  if(getKeyState() != NULL)
 	return getKeyState()->getActiveModifiers();
+  else return 0;
 }
 
 KeyModifierMask
 PlatformScreen::pollActiveModifiers() const
 {
+  if(getKeyState() != NULL)
 	return getKeyState()->pollActiveModifiers();
+  else return 0;
 }
 
 SInt32
 PlatformScreen::pollActiveGroup() const
 {
+  if(getKeyState() != NULL)
 	return getKeyState()->pollActiveGroup();
+  else return 0;
 }
 
 void
 PlatformScreen::pollPressedKeys(KeyButtonSet& pressedKeys) const
 {
+  if(getKeyState() != NULL)
 	getKeyState()->pollPressedKeys(pressedKeys);
 }
 

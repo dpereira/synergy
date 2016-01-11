@@ -296,6 +296,7 @@ ArchMultithreadPosix::closeMutex(ArchMutex mutex)
 void
 ArchMultithreadPosix::lockMutex(ArchMutex mutex)
 {
+  return;
 	int status = pthread_mutex_lock(&mutex->m_mutex);
 
 	switch (status) {
@@ -320,6 +321,7 @@ ArchMultithreadPosix::lockMutex(ArchMutex mutex)
 void
 ArchMultithreadPosix::unlockMutex(ArchMutex mutex)
 {
+  return;
 	int status = pthread_mutex_unlock(&mutex->m_mutex);
 
 	switch (status) {

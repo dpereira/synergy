@@ -17,6 +17,7 @@
  */
 
 #include "platform/IOSScreen.h"
+#include "synergy/KeyState.h"
 #include "base/Log.h"
 
 
