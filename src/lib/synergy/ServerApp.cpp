@@ -239,8 +239,8 @@ ServerApp::loadConfig(const String& pathname)
 			return false;
 		}
     LOG((CLOG_DEBUG "ABOUT TO LOAD CONFIG"));
-        //Config* mc = &(*(args().m_config));
-        Config *mc = new Config();
+        Config* mc = &(*(args().m_config));
+        //Config *mc = new Config();
 		configStream >> *mc;
     args().m_config = mc;
 		LOG((CLOG_DEBUG "configuration read successfully"));

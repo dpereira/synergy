@@ -980,7 +980,6 @@ InputFilter::setPrimaryClient(PrimaryClient* client)
 	m_primaryClient = client;
 
 	if (m_primaryClient != NULL) {
-    /*
 		m_events->adoptHandler(m_events->forIKeyState().keyDown(),
 							m_primaryClient->getEventTarget(),
 							new TMethodEventJob<InputFilter>(this,
@@ -1018,7 +1017,6 @@ InputFilter::setPrimaryClient(PrimaryClient* client)
 								 rule != m_ruleList.end(); ++rule) {
 			rule->enable(m_primaryClient);
 		}
-    */
 	}
 }
 

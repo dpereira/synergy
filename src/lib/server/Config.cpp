@@ -621,8 +621,7 @@ Config::read(ConfigReadContext& context)
 {
   LOG((CLOG_DEBUG "#1 0x%x", (unsigned long)this ));
 
-	//Config tmp(m_events);
-  Config tmp;
+	Config tmp(m_events);
 
   LOG((CLOG_DEBUG "#2 0x%x", (unsigned long)this ));
 
